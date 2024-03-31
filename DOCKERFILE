@@ -1,6 +1,11 @@
-FROM node:19
+FROM node:19 AS base
 WORKDIR /app
 COPY package.json .
 RUN npm install
+
+FROM base AS build
 COPY . .
+
+FROM base AS site
+COPY ./src ./tsconfig.json ./
 CMD ["npm", "start"]
