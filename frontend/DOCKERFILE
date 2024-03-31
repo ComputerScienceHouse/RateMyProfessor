@@ -4,8 +4,8 @@ COPY package.json .
 RUN npm install
 
 FROM base AS build
-COPY . .
+COPY . /app
 
 FROM base AS site
-COPY ./src ./tsconfig.json ./
+COPY ./src ./tsconfig.json /app/
 CMD ["npm", "start"]
