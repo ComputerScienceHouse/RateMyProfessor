@@ -1,5 +1,6 @@
 import { useState }  from 'react'
 import SearchBar from '../components/SearchBar'
+import './Home.css'
 
 
 const Home = () => {
@@ -21,8 +22,8 @@ const Home = () => {
     };
 
     return (
-        <div>
-            <h1 className="display-3">Hello World!</h1>
+        <div className='home'>
+            <h2 className="display-3">Find a professor!</h2>
             <SearchBar onSearch={handleSearch} />
       {/* Display search results */}
       <ul>

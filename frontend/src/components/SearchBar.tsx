@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import './SearchBar.css'
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
@@ -17,15 +18,20 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={query}
-        onChange={handleChange}
+    
+    <form onSubmit={handleSubmit} className='search-bar'>
+    <input 
+      type="search" 
+      name="search" 
+      pattern=".*\S.*" 
+      required 
+      value={query}
+      onChange={handleChange}
       />
-      <button type="submit">Search</button>
-    </form>
+    <button className="search-btn" type="submit">
+      <span>Search</span>
+    </button>
+  </form>
   );
 };
 
