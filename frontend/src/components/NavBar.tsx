@@ -9,11 +9,14 @@ import {
 } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
 import Profile from './Profile'
+import ThemeToggle from './ThemeToggle'
+var csh = require('csh-material-bootstrap');
 
 const NavBar: React.FunctionComponent = () => {
     const [isOpen, setIsOpen] = React.useState<boolean>(false)
 
     const toggle = () => {
+        console.log(csh.ThemeToggle(null))
         setIsOpen(!isOpen)
     }
 
@@ -22,7 +25,7 @@ const NavBar: React.FunctionComponent = () => {
             <Navbar color='primary' dark expand='lg' fixed='top'>
                 <Container>
                     <NavLink to='/' className={'navbar-brand'}>
-                        CSH React Boilerplate
+                        Rate A Professor
                     </NavLink>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
@@ -36,6 +39,7 @@ const NavBar: React.FunctionComponent = () => {
                                 // to add stuff to the navbar, add a NavItem tag with a NavLink to the route
                             }
                         </Nav>
+                        <ThemeToggle/>
                         <Nav navbar className='ml-auto'>
                             <Profile />
                         </Nav>

@@ -1,10 +1,4 @@
-import { useOidcAccessToken, useOidc, useOidcIdToken } from '@axa-fr/react-oidc'
-import React, { useState }  from 'react'
-import { Link } from 'react-router-dom'
-import Authenticating from '../callbacks/Authenticating'
-import AuthenticationError from '../callbacks/AuthenticationError'
-import SessionLost from '../callbacks/SessionLost'
-import UserInfo from '../UserInfo'
+import { useState }  from 'react'
 import SearchBar from '../components/SearchBar'
 
 
