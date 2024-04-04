@@ -37,10 +37,10 @@ const NavBar: React.FunctionComponent = () => {
                                 // to add stuff to the navbar, add a NavItem tag with a NavLink to the route
                             }
                         </Nav>
-                        <ThemeToggle/>
                         <Nav navbar className='ml-auto'>
                             <Profile />
                         </Nav>
+                        <ThemeToggle/>
                     </Collapse>
                 </Container>
             </Navbar>

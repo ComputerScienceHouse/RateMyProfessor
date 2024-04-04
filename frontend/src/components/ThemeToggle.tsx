@@ -24,7 +24,7 @@ const ThemeToggle: React.FunctionComponent = () => {
     }
 
     return (
-        <div id="theme-indicator" className="ml-auto" style={{ width: "32px", height: "32px" }} 
+        <div id="theme-indicator" style={{ width: "32px", height: "32px" }} 
             onClick={(e) => { toggleTheme(e.currentTarget) }}>
         </div>
     )
