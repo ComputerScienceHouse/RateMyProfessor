@@ -17,6 +17,13 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     onSearch(query);
   };
 
+  // return(
+  //   <form onSubmit={handleSubmit} className="form-inline my-1 my-lg-0">
+  //     <input className="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search" value={query} onChange={handleChange}/>
+  //     <button className="btn btn-outline-success my-1 my-sm-0" type="submit">Search</button>
+  //   </form>
+  // )
+
   return (
     
     <form onSubmit={handleSubmit} className='search-bar'>
@@ -28,9 +35,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
       value={query}
       onChange={handleChange}
       />
-    <button className="search-btn" type="submit">
-      <span>Search</span>
-    </button>
+    <button className="search-btn" type="submit"/>
   </form>
   );
 };
