@@ -10,13 +10,11 @@ import {
 import { NavLink } from 'react-router-dom'
 import Profile from './Profile'
 import ThemeToggle from './ThemeToggle'
-var csh = require('csh-material-bootstrap');
 
 const NavBar: React.FunctionComponent = () => {
     const [isOpen, setIsOpen] = React.useState<boolean>(false)
 
     const toggle = () => {
-        console.log(csh.ThemeToggle(null))
         setIsOpen(!isOpen)
     }
 
