@@ -15,16 +15,16 @@ const ThemeToggle: React.FunctionComponent = () => {
     const toggleTheme = (target: HTMLElement) => {
         if (document.body.classList.contains("dark-theme")) {
             document.body.classList.remove('dark-theme');
-            target.innerHTML = '<span class="material-icons-outlined">dark_mode</span>';
+            target.innerHTML = '<span class="material-icons-outlined" style="font-size: 32px">dark_mode</span>';
         }
         else {
             document.body.classList.add('dark-theme');
-            target.innerHTML = '<span class="material-icons-outlined">light_mode</span>';
+            target.innerHTML = '<span class="material-icons-outlined" style="font-size: 32px">light_mode</span>';
         }
     }
 
     return (
-        <div id="theme-indicator" style={{ width: "32px", height: "32px" }} 
+        <div id="theme-indicator" style={{ width: "32px", height: "32px"}} 
             onClick={(e) => { toggleTheme(e.currentTarget) }}>
         </div>
     )
