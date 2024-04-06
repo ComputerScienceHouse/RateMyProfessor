@@ -25,7 +25,7 @@ type User struct {
 	Uid     string // uid from ldap
 	Name    string // cn or displayname from ldap
 	Reviews []Review
-	// There's gonna be more I just don't know what
+	// There's gonna be more I just don't know what (we probably don't really need more tho)
 }
 
 type College struct {
