@@ -17,3 +17,4 @@
 - https://pkg.go.dev/database/sql
 - https://go.dev/wiki/SQLDrivers
     - We are using pq for PostgresSQL
+- https://www.jetbrains.com/guide/go/tutorials/rest_api_series/stdlib/

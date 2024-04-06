@@ -1,88 +1,22 @@
 package main
 
-import (
-	"bytes"
-	"encoding/json"
-	"fmt"
-	"io"
-	"net/http"
-)
+import "net/http"
 
-// function to format JSON data
-func formatJSON(data []byte) string {
-	var out bytes.Buffer
-	err := json.Indent(&out, data, "", "  ")
+func main() {
 
-	if err != nil {
-		fmt.Println(err)
-	}
+	// Create a new request multiplexer
+	// Take incoming requests and dispatch them to the matching handlers
+	mux := http.NewServeMux()
 
-	d := out.Bytes()
-	return string(d)
+	// Register the routes and handlers
+	mux.Handle("/", &homeHandler{})
+
+	// Run the server
+	http.ListenAndServe(":8080", mux)
 }
 
-func createUser(name, job string) {
-	fmt.Println("Creating user...")
+type homeHandler struct{}
 
-	apiUrl := "https://reqres.in/api/users"
-	userData := []byte(`{"name":"` + name + `","job":"` + job + `"}`)
-
-	// create new http request
-	request, error := http.NewRequest("POST", apiUrl, bytes.NewBuffer(userData))
-	request.Header.Set("Content-Type", "application/json; charset=utf-8")
-
-	// send the request
-	client := &http.Client{}
-	response, error := client.Do(request)
-
-	if error != nil {
-		fmt.Println(error)
-	}
-
-	responseBody, error := io.ReadAll(response.Body)
-
-	if error != nil {
-		fmt.Println(error)
-	}
-
-	formattedData := formatJSON(responseBody)
-	fmt.Println("Status: ", response.Status)
-	fmt.Println("Response body: ", formattedData)
-
-	// clean up memory after execution
-	defer response.Body.Close()
-}
-
-func getUser(id string) {
-	fmt.Println("Getting user by ID...")
-
-	// make GET request to API to get user by ID
-	apiUrl := "https://reqres.in/api/users/" + id
-	request, error := http.NewRequest("GET", apiUrl, nil)
-
-	if error != nil {
-		fmt.Println(error)
-	}
-
-	request.Header.Set("Content-Type", "application/json; charset=utf-8")
-
-	client := &http.Client{}
-	response, error := client.Do(request)
-
-	if error != nil {
-		fmt.Println(error)
-	}
-
-	responseBody, error := io.ReadAll(response.Body)
-
-	if error != nil {
-		fmt.Println(error)
-	}
-
-	formattedData := formatJSON(responseBody)
-	fmt.Println("Status: ", response.Status)
-	fmt.Println("Response body: ", formattedData)
-
-	// clean up memory after execution
-	defer response.Body.Close()
+func (h *homeHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("This is my home page"))
 }

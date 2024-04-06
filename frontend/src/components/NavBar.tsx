@@ -23,20 +23,20 @@ const NavBar: React.FunctionComponent = () => {
             <Navbar color='primary' dark expand='lg' fixed='top'>
                 <Container>
                     <NavLink to='/' className={'navbar-brand'}>
-                        Rate A Professor
+                        Rate My Professors
                     </NavLink>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav navbar>
+                            {
+                                // to add stuff to the navbar, add a NavItem tag with a NavLink to the route
+                            }
                             <NavItem>
                             <form className="form-inline my-2 my-lg-0">
                                 <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
                                 <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                             </form>
                             </NavItem>
-                            {
-                                // to add stuff to the navbar, add a NavItem tag with a NavLink to the route
-                            }
                         </Nav>
                         <Nav navbar className='ml-auto'>
                             <Profile />
