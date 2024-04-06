@@ -1,8 +1,8 @@
 package main
 
 type Professor struct {
-	Id   int
-	Name string
+	Id   int    // we could add a json tag if we want to use a JSON payload but I don't see the point rn? Maybe I'm crazy
+	Name string // e.g. 'json:"name"'
 }
 
 type Course struct {
@@ -22,8 +22,9 @@ type Review struct {
 }
 
 type User struct {
-	Id   int
-	Name string // This could be Username or we can have both Name and CSH Username
+	Uid     string // uid from ldap
+	Name    string // cn or displayname from ldap
+	Reviews []Review
 	// There's gonna be more I just don't know what
 }
 
