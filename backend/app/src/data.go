@@ -13,12 +13,13 @@ type Course struct {
 }
 
 type Review struct {
-	Id        int
-	Rating    int
-	Date      string
-	Course    Course
-	Professor Professor
-	User      User
+	Id         int
+	Quality    float32
+	Difficulty float32
+	Date       int
+	Course     Course
+	Professor  Professor
+	User       User
 }
 
 type User struct {
