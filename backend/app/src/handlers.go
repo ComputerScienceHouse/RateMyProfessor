@@ -5,7 +5,34 @@ import (
 	"net/http"
 )
 
-func handleUsers() {
+func handleRequests(mux *http.ServeMux) *http.ServeMux {
+	// Register the routes and handlers
+	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
+		// Handle the homepage
+		fmt.Fprintf(w, "This is the home page")
+	})
+
+	// User pages
+	mux = handleUsers(mux)
+
+	// Professor pages
+	mux = handleProfessors(mux)
+
+	// Course pages
+	mux = handleCourses(mux)
+
+	// College pages
+	mux = handleColleges(mux)
+
+	// Review Pages
+	mux = handleReviews(mux)
+
+	// Search pages
+	mux = handleSearch(mux)
+	return mux
+}
+
+func handleUsers(mux *http.ServeMux) *http.ServeMux {
 	// We could remove this since it is redundant to the search url
 	mux.HandleFunc("GET /users", func(w http.ResponseWriter, r *http.Request) {
 		// Return the list of all users
@@ -42,9 +69,10 @@ func handleUsers() {
 		id := r.PathValue("id")
 		fmt.Fprintf(w, "This is the update user page for user: %s", id)
 	})
+	return mux
 }
 
-func handleColleges() {
+func handleColleges(mux *http.ServeMux) *http.ServeMux {
 	mux.HandleFunc("GET /colleges", func(w http.ResponseWriter, r *http.Request) {
 		// Return the list of all colleges
 		fmt.Fprintf(w, "This is the colleges page")
@@ -80,9 +108,10 @@ func handleColleges() {
 		id := r.PathValue("id")
 		fmt.Fprintf(w, "This is the update college page for college: %s", id)
 	})
+	return mux
 }
 
-func handleCourses() {
+func handleCourses(mux *http.ServeMux) *http.ServeMux {
 	mux.HandleFunc("GET /courses", func(w http.ResponseWriter, r *http.Request) {
 		// Return the list of all courses
 		fmt.Fprintf(w, "This is the courses page")
@@ -118,9 +147,10 @@ func handleCourses() {
 		id := r.PathValue("id")
 		fmt.Fprintf(w, "This is the update course page for course: %s", id)
 	})
+	return mux
 }
 
-func handleReviews() {
+func handleReviews(mux *http.ServeMux) *http.ServeMux {
 	mux.HandleFunc("GET /reviews", func(w http.ResponseWriter, r *http.Request) {
 		// Return the list of all reviews
 		fmt.Fprintf(w, "This is the reviews page")
@@ -149,9 +179,10 @@ func handleReviews() {
 		rid := r.PathValue("rid")
 		fmt.Fprintf(w, "This is the delete review page for review: %s", rid)
 	})
+	return mux
 }
 
-func handleSearch() {
+func handleSearch(mux *http.ServeMux) *http.ServeMux {
 	mux.HandleFunc("GET /search", func(w http.ResponseWriter, r *http.Request) {
 		// Handle the search page
 		fmt.Fprintf(w, "This is the search page")
@@ -200,9 +231,11 @@ func handleSearch() {
 		name := r.PathValue("name")
 		fmt.Fprintf(w, "This is the search page for colleges with name: %s", name)
 	})
+	// I am choosing not to implement search by reviews because that seems backwards
+	return mux
 }
 
-func handleProfessors() {
+func handleProfessors(mux *http.ServeMux) *http.ServeMux {
 	mux.HandleFunc("GET /professors", func(w http.ResponseWriter, r *http.Request) {
 		// Return the list of all professors
 		fmt.Fprintf(w, "This is the professors page")
@@ -238,4 +271,5 @@ func handleProfessors() {
 		id := r.PathValue("id")
 		fmt.Fprintf(w, "This is the update professor page for professor: %s", id)
 	})
+	return mux
 }
